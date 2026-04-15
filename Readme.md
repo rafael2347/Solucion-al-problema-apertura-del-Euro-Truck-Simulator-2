@@ -1,26 +1,27 @@
 ---
 
-# 🚛 Optimización Configuración – Euro Truck Simulator 2
+# 🚛 Optimización de Configuración – Euro Truck Simulator 2
 
-Este documento explica los cambios realizados en el archivo `config.cfg` para mejorar el rendimiento del juego manteniendo buena calidad visual.
-Llevo varios días solucionando este problema en Euro Truck Simulator 2, abria el juego y siempre se rompia y se detenia el juego, he probado a desistalarlo, a borrar los mods, pero nada, la solucion principal está en el archivo connfig
+Este documento explica los cambios realizados en el archivo `config.cfg` para mejorar el rendimiento y la estabilidad del juego.
+
+Después de varios intentos (reinstalar, quitar mods, etc.), el problema principal se encontraba en la configuración interna del juego, especialmente en ciertos parámetros gráficos y de iluminación.
+
 ---
 
 # 🎯 Objetivo
 
-Optimizar el rendimiento en resolución **3440x1440 (Ultrawide 2K)** reduciendo el impacto de los elementos más pesados del juego como:
+Optimizar el juego en resolución **3440x1440 (Ultrawide 2K)** consiguiendo:
 
-* Espejos
-* Sombras
-* Resolución interna
-* Texturas
-* Anisotropía
+* Mejor rendimiento (FPS estables)
+* Imagen más nítida
+* Eliminación de conflictos externos (RGB / iluminación)
+* Mayor estabilidad general
 
 ---
 
-# ⚙️ Cambios Realizados
+# ⚙️ Cambios Clave
 
-## 🔹 1. Escala de resolución interna
+## 🔹 1. Resolución interna (Escalado)
 
 Antes:
 
@@ -36,8 +37,8 @@ uset r_scale_x "1.0"
 uset r_scale_y "1.0"
 ```
 
-✔ Permite renderizar el juego a resolución real
-✔ Elimina efecto borroso
+✔ Elimina el efecto borroso
+✔ Renderizado a resolución real
 
 ---
 
@@ -55,7 +56,7 @@ Ahora:
 uset r_texture_detail "2"
 ```
 
-✔ Mejora la calidad visual de camiones, carretera y entorno
+✔ Mejora notable en camiones, carreteras y entorno
 
 ---
 
@@ -73,14 +74,12 @@ Ahora:
 uset r_anisotropy_factor "1"
 ```
 
-✔ Mejora nitidez de texturas a distancia
-✔ Carreteras más definidas
+✔ Texturas más nítidas a distancia
+✔ Mejora visual en carretera
 
 ---
 
-## 🔹 4. Optimización de espejos (para ganar FPS)
-
-Recomendado si necesitas más rendimiento:
+## 🔹 4. Optimización de espejos
 
 ```
 uset r_mirror_group "2"
@@ -88,27 +87,45 @@ uset r_mirror_view_distance "50"
 ```
 
 ✔ Reduce carga de GPU
-✔ Mejora estabilidad de FPS
+✔ Mejora FPS en cabina
 
 ---
 
-## 🔹 5. Sombras (opcional si necesitas más rendimiento)
-
-Si el juego va justo:
+## 🔹 5. Sombras (ajuste equilibrado)
 
 ```
 uset r_sun_shadow_texture_size "2048"
 ```
 
-✔ Reduce consumo sin perder demasiada calidad
+✔ Buen equilibrio entre calidad y rendimiento
+
+---
+
+## 🔹 6. ⚠️ Iluminación / RGB (MUY IMPORTANTE)
+
+Se han ajustado/desactivado parámetros relacionados con iluminación dinámica debido a conflictos con **Armoury Crate**.
+
+💥 Problema detectado:
+
+* El juego se cerraba o se volvía inestable
+* Conflicto entre el sistema de luces del juego y el software RGB del sistema
+
+✅ Solución aplicada:
+
+* Reducir o desactivar efectos de iluminación en el config
+* Evitar que el juego gestione efectos de luces que interfieran con Armoury Crate
+
+✔ Resultado:
+
+* Juego estable
+* Sin crasheos al iniciar
+* Sin conflictos con el RGB del sistema
 
 ---
 
 # 📝 Cómo aplicar los cambios
 
-## Paso 1️⃣ – Localizar el archivo
-
-El archivo `config.cfg` está en:
+## Paso 1️⃣ – Ubicar el archivo
 
 ```
 Documentos > Euro Truck Simulator 2
@@ -116,40 +133,38 @@ Documentos > Euro Truck Simulator 2
 
 ---
 
-## Paso 2️⃣ – Abrir con Visual Studio Code
+## Paso 2️⃣ – Editarlo
 
-1. Clic derecho sobre `config.cfg`
-2. Seleccionar **Abrir con**
-3. Elegir **Visual Studio Code**
+1. Clic derecho en `config.cfg`
+2. Abrir con Visual Studio Code (o Bloc de notas)
 
 ---
 
-## Paso 3️⃣ – Reemplazar contenido
+## Paso 3️⃣ – Aplicar configuración
 
-1. Pulsar `Ctrl + A` → Seleccionar todo
+1. `Ctrl + A` → seleccionar todo
 2. Pegar la nueva configuración
-3. Pulsar `Ctrl + S` → Guardar
+3. `Ctrl + S` → guardar
 
 ---
 
 # ⚠️ Importante
 
-* Asegúrate de que el juego esté cerrado antes de modificar el archivo.
-* Si el juego sobrescribe los cambios, puedes marcar el archivo como:
+* El juego debe estar **cerrado**
+* Si se sobreescribe el archivo:
 
-  * Clic derecho → Propiedades → Solo lectura
+  * Clic derecho → Propiedades → **Solo lectura**
 
 ---
 
-# ✅ Resultado Esperado
+# ✅ Resultado esperado
 
 * Imagen más nítida
 * Mejor rendimiento
-* Menos carga en espejos
-* Texturas en alta calidad
-* Configuración optimizada para ultrawide
+* FPS más estables
+* Menor carga en GPU
+* Sin conflictos con RGB / Armoury Crate
 
 ---
 
-Espero que te haya servido :)
-
+Si quieres, puedo hacerte una versión aún más pro (tipo GitHub con badges, capturas y comparación antes/después).
